@@ -105,10 +105,10 @@ exemple pour récupérer le nombre de parties du cours envoyées sur le site :
 ```python
 import requests
 
-reponse_requete_http = requests.get("https://conception-logicielle.abrunetti.fr/cours/")
+reponse_requete_http = requests.get("https://conception-logicielle.abrunetti.fr/cours-2024/")
 r = requests.get(url)
 html = r.text
-url = "http://localhost:1313/cours/"
+url = "http://localhost:1313/cours-2024/"
 get_h2_parties_du_cours_beginning_index = html.find("<h2 id=\"parties-du-cours\"")
 html_apres_parties = html[get_h2_parties_du_cours_beginning_index::]
 get_liste_parties_du_cours_start_index = html_apres_parties.find("<ul>") + 4
@@ -169,12 +169,12 @@ On peut ensuite utiliser les groupes de capture avec `\1` ou `\0`
 Exemple avec le support du cours
 ```python
 import requests
-url = "https://conception-logicielle.abrunetti.fr/cours/"
+url = "https://conception-logicielle.abrunetti.fr/cours-2024/"
 r = requests.get(url)
 html = r.text
 print(html)
 import re
-pattern_regex = "<li><a href=\/cours/(.*?)\>"
+pattern_regex = "<li><a href=\/cours-2024/(.*?)\>"
 matches = re.findall(pattern_regex,html)
 print(matches)
 # [' title=Cours', 'introduction', 'introduction', 'git/', 'portabilite/', 'qualite-automatisation/']
@@ -190,7 +190,7 @@ C'est une librairie externe on doit l'installer avec `pip` : `pip3 install beaut
 from bs4 import BeautifulSoup
 import requests
 
-url = "https://conception-logicielle.abrunetti.fr/cours/"
+url = "https://conception-logicielle.abrunetti.fr/cours-2024/"
 res = requests.get(url)
 html = res.text
 soup = BeautifulSoup(html, "html.parser")
